@@ -57,9 +57,12 @@ public class EmployeeService {
     private double calculatePerformanceScore(SelfReview selfReview, ManagerReview managerReview) {
         int selfReviewScore = selfReview.getReviewText().length() < 50 ? 1 :
                 selfReview.getReviewText().length() <= 150 ? 2 : 3;
+
         double managerWeightedScore = managerReview.getRating() * 0.7;
-        return selfReviewScore + managerWeightedScore;
+
+        return (selfReviewScore + managerWeightedScore) / 2;
     }
+
 
 
 
