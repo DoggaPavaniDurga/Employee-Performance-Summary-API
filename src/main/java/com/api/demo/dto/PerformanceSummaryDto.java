@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-
-
 public class PerformanceSummaryDto {
 
     private String selfReviewText;
@@ -27,5 +25,4 @@ public class PerformanceSummaryDto {
         this.performanceScore = performanceScore;
     }
 
-    // Getters and Setters
 }

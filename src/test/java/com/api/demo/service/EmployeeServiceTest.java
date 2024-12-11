@@ -35,7 +35,6 @@ public class EmployeeServiceTest {
 
     @Test
     void testGetPerformanceSummary() {
-        // Prepare mock data
         Employee employee = new Employee();
         employee.setId(1L);
 
@@ -48,15 +47,12 @@ public class EmployeeServiceTest {
         managerReview.setRating(4);
         managerReview.setSubmittedAt(java.time.LocalDateTime.now());
 
-        // Set up mocks
         when(employeeRepository.findById(1L)).thenReturn(java.util.Optional.of(employee));
         when(selfReviewRepository.findByEmployeeId(1L)).thenReturn(List.of(selfReview));
         when(managerReviewRepository.findByEmployeeId(1L)).thenReturn(List.of(managerReview));
 
-        // Test the method
         PerformanceSummaryDto performanceSummary = employeeService.getPerformanceSummary(1L);
 
-        // Assert that the summary is calculated correctly
         assertNotNull(performanceSummary);
         assertEquals("Self Review Text", performanceSummary.getSelfReviewText());
         assertEquals(4, performanceSummary.getManagerRating());

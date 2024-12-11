@@ -36,8 +36,6 @@ public class EmployeeControllerTest {
     void testSubmitSelfReview() throws Exception {
         SelfReview selfReview = new SelfReview();
         selfReview.setReviewText("Review text");
-
-        // Mock the service method
         doNothing().when(employeeService).submitSelfReview(1L, selfReview);
 
         mockMvc.perform(post("/employees/1/self-review")
@@ -52,8 +50,6 @@ public class EmployeeControllerTest {
         ManagerReview managerReview = new ManagerReview();
         managerReview.setReviewText("Manager Review text");
         managerReview.setRating(4);
-
-        // Mock the service method
         doNothing().when(employeeService).submitManagerReview(1L, managerReview);
 
         mockMvc.perform(post("/employees/1/manager-review")
@@ -69,7 +65,6 @@ public class EmployeeControllerTest {
                 "Self Review Text", java.time.LocalDateTime.now(),
                 "Manager Review Text", 4, java.time.LocalDateTime.now(), 3.5);
 
-        // Mock the service method
         when(employeeService.getPerformanceSummary(1L)).thenReturn(performanceSummary);
 
         mockMvc.perform(get("/employees/1/performance-summary"))
